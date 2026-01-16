@@ -1,0 +1,120 @@
+<section id="projects" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+  <div class="container mx-auto px-6">
+
+    <!-- Título -->
+    <h2 class="text-3xl font-bold mb-12 text-center text-gray-800 dark:text-white">
+      {{ translations?.title }}
+    </h2>
+
+    <ng-container *ngIf="projects$ | async as projects">
+      
+      <!-- Lista de projetos -->
+      <div
+        *ngIf="projects.length > 0; else noProjects"
+        class="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+      >
+        <article
+          *ngFor="let project of projects; trackBy: trackById"
+          class="rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition"
+        >
+          <!-- Imagem -->
+          <img
+            [src]="project.image || 'assets/images/project-placeholder.jpg'"
+            [alt]="project.title || noTitleMessage"
+            class="w-full h-48 object-cover"
+            loading="lazy"
+          />
+
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
+              {{ getProjectTitle(project) }}
+            </h3>
+
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              {{ getProjectDescription(project) }}
+            </p>
+
+            <!-- Tecnologias -->
+              <div *ngIf="project.technologies?.length" class="mb-4">
+                <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  {{ translations?.technologies }}
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    *ngFor="let tech of project.technologies"
+                    class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full"
+                  >
+                    {{ tech }}
+                  </span>
+                </div>
+              </div>
+
+            <!-- Links -->
+            <div
+              *ngIf="project.links"
+              class="flex gap-4"
+            >
+              <!-- Link para GitHub -->
+              <a
+                *ngIf="project.links?.github"
+                [href]="project.links.github"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                {{ translations?.viewCode }}
+              </a>
+
+              <!-- Link para Demo (usar viewProject se existir) -->
+              <a
+                *ngIf="project.links?.demo"
+                [href]="project.links.demo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-purple-600 dark:text-purple-400 hover:underline"
+              >
+                {{ translations?.viewProject}}
+              </a>
+
+              <!-- Link Live  -->
+              <a
+                *ngIf="project.links?.live"
+                [href]="project.links.live"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-green-600 dark:text-green-400 hover:underline"
+              >
+                {{ translations?.viewProject}}
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Sem projetos -->
+      <ng-template #noProjects>
+        <div class="text-center py-12">
+          <p class="text-gray-500 dark:text-gray-400 text-lg">
+            {{ noProjectsMessage }}
+          </p>
+        </div>
+      </ng-template>
+
+    </ng-container>
+
+    <!-- Botão Ver Mais (opcional, se for usar) -->
+    <div *ngIf="showMoreProjects" class="mt-12 text-center">
+      <!-- Conteúdo adicional quando mostrar mais -->
+    </div>
+
+    <!-- Botão para alternar (opcional) -->
+    <!-- <button 
+      *ngIf="(projects$ | async)?.length > 3"
+      (click)="toggleShowMore()"
+      class="mt-8 mx-auto block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+    >
+      {{ showMoreProjects ? 'Ver Menos' : translations?.viewMore }}
+    </button> -->
+  </div>
+</section>

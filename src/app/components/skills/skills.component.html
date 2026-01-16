@@ -1,0 +1,52 @@
+<section id="skills" class="py-24 px-4 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+  <div class="max-w-6xl mx-auto">
+
+    <h2 class="text-3xl font-bold text-center mb-16 text-gray-900 dark:text-white">
+      {{ translations?.skills?.title || 'Habilidades' }}
+    </h2>
+
+    <ng-container *ngIf="skillsByCategory$ | async as skillsMap">
+
+      <div class="space-y-16">
+
+        <div *ngFor="let category of categories; trackBy: trackByCategory">
+          <h3 class="text-xl font-semibold mb-6 text-indigo-600 dark:text-indigo-400">
+            {{ getCategoryLabel(category) }}
+          </h3>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+            <div
+              *ngFor="let skill of skillsMap.get(category) ?? []; trackBy: trackByName"
+              class="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 text-center group hover:scale-105 hover:-translate-y-1"
+            >
+              <!-- Container do ícone -->
+              <div class="flex justify-center mb-3 sm:mb-4">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center relative">
+                  <!-- Ícone SVG -->
+                  <img 
+                    [src]="getIconPath(skill.icon)" 
+                    [alt]="skill.name + ' icon'"
+                    loading="lazy"
+                    class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                    (error)="onImageError($event, skill.icon)"
+                  />
+                  
+                </div>
+              </div>
+
+              <!-- Nome da skill -->
+              <span class="font-medium text-gray-800 dark:text-gray-200 block mb-2">
+                {{ skill.name }}
+              </span>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </ng-container>
+  </div>
+</section>

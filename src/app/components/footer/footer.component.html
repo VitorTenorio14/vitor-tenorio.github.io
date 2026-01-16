@@ -1,0 +1,24 @@
+<footer class="bg-gray-900 text-gray-400 py-10 px-4">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+
+    <!-- Nome -->
+    <span class="text-white font-semibold">
+      {{ name() }}
+    </span>
+
+    <!-- Links -->
+    <ul class="flex gap-6 text-sm">
+      <li><a href="#about" class="hover:text-white">{{ aboutLabel() }}</a></li>
+      <li><a href="#skills" class="hover:text-white">{{ skillsLabel() }}</a></li>
+      <li><a href="#projects" class="hover:text-white">{{ projectsLabel() }}</a></li>
+      <li><a href="#education" class="hover:text-white">{{ educationLabel() }}</a></li>
+      <li><a href="#professions" class="hover:text-white">{{ experienceLabel() }}</a></li>
+    </ul>
+
+    <!-- Copyright -->
+    <span class="text-sm">
+      © {{ year }} {{ name() }} — {{ rightsLabel() }}
+    </span>
+
+  </div>
+</footer>
