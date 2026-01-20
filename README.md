@@ -38,26 +38,16 @@ npx tailwindcss init
 
 ### 1. Dados Pessoais
 
-Edite o arquivo `src/app/services/portfolio-data.service.ts` para adicionar seus dados:
-
-- **Informações pessoais**: nome, título, descrição
-- **Habilidades**: adicione/remova tecnologias
-- **Projetos**: adicione seus projetos com imagens e links
-- **Redes sociais**: atualize seus links
+- **Informações pessoais**
+- **Habilidades**
+- **Projetos**
+- **Redes sociais**
 
 ### 2. Imagens
 
-Coloque suas imagens na pasta `src/assets/images/`:
-- `profile.jpg` - Foto de perfil
-- `about.jpg` - Foto da seção sobre (opcional)
-- `projects/` - Screenshots dos projetos
 
 ### 3. Cores e Tema
 
-Modifique o arquivo `tailwind.config.js` para personalizar:
-- Paleta de cores
-- Fontes
-- Espaçamentos customizados
 
 ## 🏃 Executar Localmente
 
@@ -105,32 +95,47 @@ npx angular-cli-ghpages --dir=dist/portfolio-angular/browser
 │    │   │        ├── header.component.html
 │    │   │        └── header.component.ts
 │    │   │   ├── hero/
+│    │   │        └── hero.component.html
 │    │   │        └── hero.component.ts
 │    │   │   ├── about/
+│    │   │        └── about.component.html
 │    │   │        └── about.component.ts
 │    │   │   ├── skills/
+│    │   │        └── skills.component.html
 │    │   │        └── skills.component.ts
 │    │   │   ├── projects/
 │    │   │        └── projects.component.ts
-│    │   │   ├── contact/
-│    │   │        └── contact.component.ts
+│    │   │   ├── professions/
+│    │   │        └── professions.component.html
+│    │   │        └── professions.component.ts
+│    │   │   ├── education/
+│    │   │        └── education.component.html
+│    │   │        └── education.component.ts
 │    │   │   └── footer/
+│    │   │        └── footer.component.html
 │    │   │        └── footer.component.ts
 │    │   └── app.routes.ts
 │    ├── directives/
 │    │   └── fade-in.directive.ts
-│    ├── assets/
-│    │   ├── icons/
-│    │   └── images/
 │    ├── models/
+│    │   ├── portfolio.model.ts
 │    │   ├── project.model.ts
 │    │   ├── skills.model.ts
 │    │   └── social.model.ts
 │    ├── services/
 │    │   └── portfolio.service.ts
+│    │   └── theme.service.ts
+│    │   └── translation.service.ts
+│    ├── app.component.html
+│    ├── app.component.css
 │    ├── app.component.ts
 │    ├── app.config.server.ts
+│    ├── app.routes.ts
 │    └── app.config.ts
+├── assets/
+│  ├── icons/
+│  ├── images/
+├── 404.html
 ├── index.html
 ├── README.md
 ├── main.server.ts
@@ -153,16 +158,12 @@ npx angular-cli-ghpages --dir=dist/portfolio-angular/browser
 - ✅ Design responsivo (mobile-first)
 - ✅ Navegação suave entre seções
 - ✅ Animações ao scroll
-- ✅ Menu mobile com hambúrguer
+- ✅ Menu mobile
 - ✅ Cards de projetos interativos
 - ✅ Grid de habilidades
 - ✅ Formulário de contato
 - ✅ Links para redes sociais
 - ✅ SEO otimizado
-
-## 📝 Licença
-
-MIT License - sinta-se livre para usar este template!
 
 ## 🤝 Contribuindo
 
@@ -170,4 +171,4 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull re
 
 ---
 
-Desenvolvido com ❤️ usando Angular + Tailwind CSS
+Desenvolvido usando Angular + Tailwind CSS
