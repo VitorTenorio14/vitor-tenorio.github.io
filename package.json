@@ -14,7 +14,7 @@
     "analyze": "ng build --configuration production --stats-json && npx webpack-bundle-analyzer dist/meu-portfolio/browser/stats.json",
     "deploy:vercel": "vercel --prod",
     "deploy:netlify": "npm run build:prod && netlify deploy --prod --dir=dist/meu-portfolio/browser",
-    "deploy:gh-pages": "ng build --configuration production --base-href='/' && npx angular-cli-ghpages --dir=dist/meu-portfolio",
+    "deploy:gh-pages": "ng build --configuration production && npx angular-cli-ghpages --dir=dist/meu-portfolio/browser",
     "lint": "ng lint",
     "format": "prettier --write \"src/**/*.{ts,html,css,scss}\"",
     "clean": "rm -rf dist node_modules .angular",
